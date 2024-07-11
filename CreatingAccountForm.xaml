@@ -1,0 +1,59 @@
+﻿<Window x:Class="ExceptionsLibrariesExtensions.CreatingAccountForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExceptionsLibrariesExtensions"
+        mc:Ignorable="d"
+        Title="Создание счета"
+        Height="210"
+        Width="380"
+        MaxHeight="210"
+        MaxWidth="380"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Выберите тип счета"                   
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"                   
+                   Grid.Row="1"/>
+        <ComboBox HorizontalAlignment="Center"
+                  VerticalAlignment="Bottom"                  
+                  Width="200"
+                  Grid.Row="2"
+                  ItemsSource="{Binding Accounts}"
+                  SelectedItem="{Binding SelectedAccount}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=AccountType}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Center"                   
+                   Grid.Row="3"                       
+                   Text="Введите начальный баланс"
+                   VerticalAlignment="Bottom"/>
+        <TextBox HorizontalAlignment="Center"                
+                 Grid.Row="4"                                          
+                 VerticalAlignment="Bottom"
+                 Width="200"
+                 MaxLength="16"
+                 Text="{Binding Path=Balance, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="OK"
+                Command="{Binding OKCommand}"                
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Grid.Row="5"
+                Width="80"/>
+    </Grid>
+</Window>
