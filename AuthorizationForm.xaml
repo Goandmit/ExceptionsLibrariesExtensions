@@ -1,0 +1,39 @@
+﻿<Window x:Class="ExceptionsLibrariesExtensions.AuthorizationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExceptionsLibrariesExtensions"
+        mc:Ignorable="d"
+        Title="Форма авторизации"
+        Height="150"
+        Width="300"
+        MaxHeight="150"
+        MaxWidth="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Text="Выберите уровень доступа"                   
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="0,0,0,60"/>
+        <ComboBox HorizontalAlignment="Center"
+                  VerticalAlignment="Center"                  
+                  Width="200"                  
+                  ItemsSource="{Binding Workers}"
+                  SelectedItem="{Binding SelectedWorker}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Position}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="OK"
+                Command="{Binding OKCommand}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="80"
+                Margin="0,70,0,0"/>
+    </Grid>
+</Window>
